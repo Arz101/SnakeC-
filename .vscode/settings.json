@@ -1,0 +1,13 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\adrian.rodriguez\\Desktop\\C",
+            "binaryPath": "c:\\Users\\adrian.rodriguez\\Desktop\\C\\main",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "ostream": "cpp",
+        "print": "cpp"
+    }
+}
