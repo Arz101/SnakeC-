@@ -6,7 +6,7 @@ CXX = g++
 #Instruccion -std=c++17: La version de C++ que estamos usando
 #Instruccion -I include: Indica que estemos usando la carpeta Include dentro del proyecto
 #Instruccion -I"C:/...": Indica la biblioteca externa que se esta usando 
-CXXFLAGS = -Wall -std=c++20 -Iinclude -I"C:/SDL2-2.24.2/include"
+CXXFLAGS = -Wall -std=c++20 -Iinclude -Iinclude/ComponentsIncludes -I"C:/SDL2-2.24.2/include"
 
 #LDFLAGS Indica las librerias para compilar los header de los include de las bibliotecas externas
 #Instruccion -L"C:/": Indica la ruta donde se encuentra las librerias
@@ -14,13 +14,13 @@ CXXFLAGS = -Wall -std=c++20 -Iinclude -I"C:/SDL2-2.24.2/include"
 LDFLAGS = -L"C:/SDL2-2.24.2/lib/x64" -lSDL2main -lSDL2
 
 #SRC: Indica los .cpp que estamos utilizando en el programa
-SRC = main.cpp src/snake.cpp src/food.cpp src/vector2.cpp
+SRC = main.cpp $(wildcard src/*.cpp) $(wildcard ./src/UI/*.cpp) $(wildcard ./src/UI/Components/*.cpp)
 
 #OBJ: Convierte todos los .cpp que encuentre en archivos .o
 OBJ = $(SRC:.cpp=.o)
 
 #TARGET: El nombre que se le asiganara a nuestro ejecutable 
-TARGET = main
+TARGET = main.exe
 
 #all: Seleccionar el TARGET 
 all:$(TARGET)
@@ -37,7 +37,8 @@ $(TARGET) : $(OBJ)
 
 #Limpiar el proyecto con el comando: make clean
 clean:
-	del /F /Q *.o $(TARGET)
+	del /F /Q main.o "src/food.o" "src/snake.o" "src/UI/Interface.o" "src/UI/CComponent.o" "src/UI/Components/CButton.o" "src/UI/Components/CPanel.o" $(TARGET)
+
 
 # Regla por defecto para ejecutar el Makefile
 .PHONY: all clean

@@ -1,6 +1,7 @@
 #ifndef SNAKE_HPP
 #define SNAKE_HPP
 
+#include <stdio.h>
 #include <SDL.h>
 #include <deque>
 #include "vector2.hpp"
